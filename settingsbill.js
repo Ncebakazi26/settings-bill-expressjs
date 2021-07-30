@@ -33,12 +33,15 @@ module.exports = function SettingsBill() {
         else if (action === 'call' && ! hasReachedCriticalLevel()){
             cost = callCost;
         }
+          if(smsCost!==0 && callCost!==0 && ! hasReachedCriticalLevel() ){
+            actionList.push({
+                type: action,
+                cost,
+                timestamp:new Date()    
+             });
 
-        actionList.push({
-            type: action,
-            cost,
-            timestamp:new Date()    
-         });
+          }
+       
     }
 
     function actions(){
